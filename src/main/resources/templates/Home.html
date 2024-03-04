@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.com">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>BookStore</title>
+    <style>
+        /* Custom CSS */
+
+         body {
+            background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); /* Example placeholder URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f8f9fa;
+            color: #495057;
+            font-size: 18px;
+        }
+
+        nav.navbar {
+            background-color: #343a40;
+            height: 100px; /* Increased height */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.navbar a.navbar-brand {
+            font-weight: bold;
+            font-size: 32px; /* Increased font size */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #ff0000;
+            font-family: 'Playfair Display', serif; /* Updated font style */
+            transition: 0.3s;
+        }
+
+        nav.navbar a.nav-link {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 22px; /* Increased font size */
+            margin-right: 30px; /* Increased spacing */
+            font-family: 'Roboto', sans-serif; /* Updated font style */
+            transition: 0.3s;
+        }
+
+        nav.navbar a.nav-link:hover {
+            color: #007bff;
+            font-size: 24px; /* Increased font size on hover */
+            background-color: #495057;
+        }
+
+        .container.text-center {
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 36px; /* Increased font size */
+            margin-bottom: 20px;
+        }
+
+        h6 {
+            font-size: 1.4rem; /* Increased font size */
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .carousel-inner img {
+            height: 450px; /* Fixed height for carousel images */
+            object-fit: cover;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-hover {
+            transition: transform 0.3s;
+        }
+
+        .image-hover:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<!------------------------------------NAVBAR------------------------------------------------------------>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-1" style="color:greenyellow" href="#">BookStore</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="available_books">Available Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="my_books">My Books</a>
+                </li>
+            </ul>
+            <div>
+                <a class="nav-link text-white" href="book_register">New Book Registration</a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-----carousel---------------->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://img.freepik.com/free-vector/minimal-book-club-twitch-banner_23-2149758171.jpg?t=st=1708759729~exp=1708763329~hmac=2addf9da941cf0bbf3db0ad3c1c2103f33e1f6e9b0c400c1d15040e6ddeb471d&w=1380" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.freepik.com/free-vector/hand-drawn-book-club-twitch-banner_23-2149749093.jpg?t=st=1708759771~exp=1708763371~hmac=09421e0f1ac07dd84e2c45d9f3f4a16972e04c9ff7f190a5aeee75637d195a3f&w=1380" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.freepik.com/premium-vector/banner-with-books-concept-education-learning-training-knowledge-information-useful-hobby-love-literature-reading-cartoon-flat-vector-illustration-isolated-pink-background_1002658-557.jpg?w=1380" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container text-center my-5">
+    <h1>Welcome to our BookStore</h1>
+    <hr style="color:black">
+    <h6 class="paragraph">Welcome to our enchanting Book Store, where every page is a gateway to new worlds and limitless adventures. Immerse yourself in the captivating stories woven by brilliant authors, ranging from timeless classics to contemporary masterpieces.
+        Our shelves are adorned with a diverse collection, catering to every literary taste imaginable. Explore the realms of fiction, traverse the corridors of non-fiction, and embark on journeys that transcend time and space.
+        In this haven for book enthusiasts, you'll discover not just books but treasures that spark the imagination and kindle the flame of curiosity. From the eloquent prose of celebrated novelists to the profound wisdom found in insightful non-fiction,
+        each book has a story to tell and a universe to unveil.
+        Our Book Store is more than a mere marketplace; it's a sanctuary for bibliophiles, a place where ideas flourish, and the love for literature blooms. Whether you're a seasoned reader or a novice, our curated selection invites you to embark on a literary voyage,
+        where every turn of the page brings the joy of discovery.
+        Step into our world of words, where the ambiance resonates with the rustle of pages and the scent of ink. Join us in celebrating the magic of storytelling and the
+        power of a well-crafted narrative. Welcome to a place where books come alive, and every visit promises a new chapter of wonder</h6>
+    <hr style="color:black">
+    <!-- Image Gallery with Hover Effect -->
+    <div class="row">
+        <div class="col-md-4">
+            <img src="https://img.freepik.com/free-photo/written-task_1098-13625.jpg?t=st=1709536214~exp=1709539814~hmac=7d1c68eaaea9780bcc4284f01e8e4988929ed4dc1bdd0d595008b9f5cebd295f&w=996" class="img-fluid image-hover" alt="Image 1">
+        </div>
+        <div class="col-md-4">
+            <img src="https://img.freepik.com/free-photo/man-working-night_1098-12798.jpg?t=st=1709536262~exp=1709539862~hmac=0a96b9f32e5e411effa2d5620a9f2fce9c3d478480e5203616c94ac012eb999d&w=996" class="img-fluid image-hover" alt="Image 3">
+        </div>
+        <div class="col-md-4">
+            <img src="https://img.freepik.com/free-photo/lecture-notes_1098-16270.jpg?t=st=1709536242~exp=1709539842~hmac=f0df94b3dc72f96989b559b81307285800d1f6d5e36f7ceb32a35b844c4f0128&w=996" class="img-fluid image-hover" alt="Image 2">
+        </div>
+        <!-- Add more columns if you have additional images -->
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="text-center">
+        <p>&copy; 2024 BookStore. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
